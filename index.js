@@ -16,21 +16,31 @@ button.addEventListener("click", async () => {
 });
 function getdata(arr){
       results.innerHTML=" "
-     let div=document.createElement("div")
-     div.innerHTML=`
-     <h1 class="head">${arr.name} ${arr.sys.country}</h1>
-     <p class="size">Temprature: ${arr.main.temp}  <sup>.</sup>C</p>
-     <p class="size">Wind Speed: ${arr.wind.speed}  m/s</P>
-    `
-     arr.weather.forEach((element)=>{
-       
-        let i=document.createElement("P")
-        i.innerHTML=`Description:   ${element.description}`
-        div.append(i)
+      input.value=""
+    if(arr.cod==404){
+      alert("hello")
+    }else{
+        let div=document.createElement("div")
+        div.innerHTML=`
+        <h1 class="head">${arr.name} ${arr.sys.country}</h1>
+        <p class="size">Temprature: ${arr.main.temp}  <sup>o</sup>F</p>
+        <p class="size">Wind Speed: ${arr.wind.speed}  KM/H</P>
+       `
+        arr.weather.forEach((element)=>{
+          
+           let i=document.createElement("P")
+           i.innerHTML=`Description:   ${element.description}`
+           let p=document.createElement("i")
+           p.innerHTML=`${element.icon}`
+           div.append(p)
+           div.append(i)
+           
+        })
+       results.append(div)
         
-     })
-    results.append(div)
-     
-     
+    }
+    
+   
+
      
 }
