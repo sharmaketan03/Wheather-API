@@ -15,6 +15,7 @@ button.addEventListener("click", async () => {
   getdata (results)  
 });
 function getdata(arr){
+    console.log(arr)
       results.innerHTML=" "
       input.value=""
     if(arr.cod==404){
@@ -30,10 +31,14 @@ function getdata(arr){
           
            let i=document.createElement("P")
            i.innerHTML=`Description:   ${element.description}`
-           let p=document.createElement("i")
-           p.innerHTML=`${element.icon}`
-           div.append(p)
+           let image=document.createElement("img")
+           image.src=`https://openweathermap.org/img/wn/${element.icon}@2x.png`
+       
+
+           
+          
            div.append(i)
+           div.append(image)
            
         })
        results.append(div)
